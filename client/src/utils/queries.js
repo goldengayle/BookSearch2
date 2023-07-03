@@ -8,6 +8,6 @@ query me {
         email
         bookCount
         savedBooks
-
     }
+
 }`
