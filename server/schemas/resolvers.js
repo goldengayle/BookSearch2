@@ -17,8 +17,8 @@ const resolvers = {
         loginUser: async(parent, { email, password}) => {
             const user = await User.findOne({email});
 
-            if(!profile){
-                throw new AuthenticationError(`No profile with this email found!`)
+            if(!user){
+                throw new AuthenticationError(`No user with this email found!`)
             }
 
             const correctPw = await user.isCorrectPassword(password);
@@ -36,10 +36,11 @@ const resolvers = {
 
             return {token, user}
         },
-        saveBook: async (parent, { userId, book }, context) => {
+        saveBook: async (parent, { book }, context) => {
+            console.log(context.user)
             if (context.user){
                 return User.findOneAndUpdate(
-                    { _id: userId },
+                    { _id: context.user._id },
                     {
                         $addToSet: { savedBooks: book }
                     },
