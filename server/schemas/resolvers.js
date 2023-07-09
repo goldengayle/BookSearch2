@@ -12,6 +12,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
           },
 
+          users: async () => {
+            return User.find({}).populate('savedBooks')
+          }
+
     },
     Mutation:{
         loginUser: async(parent, { email, password}) => {
@@ -36,13 +40,14 @@ const resolvers = {
 
             return {token, user}
         },
-        saveBook: async (parent, { book }, context) => {
+        saveBook: async (parent, { input }, context) => {
             console.log(context.user)
+            console.log(input.bookId)
             if (context.user){
                 return User.findOneAndUpdate(
                     { _id: context.user._id },
                     {
-                        $addToSet: { savedBooks: book }
+                        $addToSet: { savedBooks: {input} }
                     },
                     {
                         new: true,
