@@ -36,13 +36,16 @@ mutation Mutation($input: BookInput) {
 `;
 export const REMOVE_BOOK = gql`
 mutation removeBook($bookId: ID!) {
-    removeBook(bookId: $bookId) {
-user{
-        _id
-        username
-        savedBooks
+  removeBook(bookId: $bookId) {
+    _id
+    bookCount
+    email
+    savedBooks {
+      title
     }
+    username
+  }
 }
-}
+
 
 `
