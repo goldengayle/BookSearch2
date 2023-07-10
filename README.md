@@ -1,7 +1,7 @@
 ## Google Book Search Engine (Week #21 Challenge)
 
 ## Introduction
-This project demonstrates the use of the MERN stack. Starter code used Restful API's which were reconfigured to use GraphQL. <a href="https://goldengayle.github.io/BookSearchEngine/">Link to Search Enging</a>
+This project demonstrates the use of the MERN stack. Starter code used Restful API's which were reconfigured to use GraphQL. <a href="https://goldengayle.github.io/BookSearchEngine/">Link to Search Engine</a>
 
 
 
